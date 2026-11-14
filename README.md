@@ -1,33 +1,43 @@
-# Product Inventory Management System (Tkinter GUI)
+# StockFlow Inventory Management System
 
-**Course:** Advanced Programming Practice (APP) – Tkinter Project  
-**Allocation:** Batch 1
+StockFlow is a desktop product inventory manager built with Python's standard-library Tkinter and ttk widgets. The application opens in a near-screen-sized window, adapts its panels when resized, and keeps its inventory Listbox visible and interactive.
 
-## Team Members
-| Register Number | Name |
+## Academic Team
+
+| Name | Register Number |
 | :--- | :--- |
-| `RA2511003010191` | Kritika Kumari |
-| `RA2511003010192` | Tanvi Gupta |
-| `RA2511003010193` | Sriya Sahu |
+| Kritika Kumari | `RA2511003010191` |
+| Tanvi Gupta | `RA2511003010192` |
+| Sriya Sahu | `RA2511003010193` |
 
-## Features & Implementation
-- **Form Inputs:** `Entry` widgets for Product ID, Product Name, Quantity, and Unit Price (₹).
-- **Selection Widgets:** `OptionMenu` for product category selection and `Checkbutton` for stock availability status.
-- **CRUD Operations:**
-  - **Add Product:** Adds validated items to the inventory dictionary and updates the display.
-  - **Search by ID:** Fetches and populates product details into the form fields.
-  - **Update Qty/Price:** Modifies existing product quantity, price, and stock status.
-  - **Delete Product:** Removes selected or searched records after confirmation.
-  - **Interactive Listbox:** Displays all inventory records; clicking any row loads its details into the form.
-- **Input Validation:**
-  - Product ID and Product Name are mandatory.
-  - Quantity must be a non-negative integer (`>= 0`).
-  - Unit Price must be a positive number (`> 0`).
+## Features
 
-## How to Run
-1. Ensure Python 3.x is installed with Tkinter (`python3 -m tkinter` to verify).
-2. Clone the repository and run the application:
-   ```bash
-   git clone <your-repo-url>
-   cd product-inventory-system
-   python3 inventory.py
+- Add, search by ID, update quantity and price, delete with confirmation, and clear form fields.
+- Product name and category filters, with a Show All reset.
+- Tkinter `OptionMenu`, `Checkbutton`, and `Listbox` controls with scrolling and reliable selection mapping.
+- Summary cards for product count, total inventory value, low stock, and out-of-stock products.
+- JSON persistence in `inventory.json` beside `inventory.py`, with atomic writes and protection against malformed files.
+- Validation for duplicate IDs, required values, non-negative integer quantities, and finite positive prices.
+- Responsive light dashboard with larger text, compact empty states, and a scrollable fallback for short windows.
+
+Low stock is an available product with a quantity from 1 through 5. A product with zero quantity is always considered out of stock.
+
+## Run on macOS
+
+Verify Tkinter is available, then run:
+
+```bash
+python3 -m tkinter
+python3 inventory.py
+```
+
+The first successful add, update, or delete creates `inventory.json` in the project directory.
+
+## Tests
+
+Run the unit tests and syntax check from this directory:
+
+```bash
+python3 -m py_compile inventory.py
+python3 -m unittest discover -v
+```
